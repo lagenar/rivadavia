@@ -1,8 +1,8 @@
-* TODO Modelar base de datos
+* DONE Modelar base de datos
   - Base de datos MySQL, con soporte para full text search.
-* TODO Popular base de datos
-* TODO Crear página web simple para buscar libros
-** TODO Buscar en todos los campos
-** TODO Buscar por título
-** TODO Buscar por autor
+* DONE Popular base de datos
+* DONE Crear página web simple para buscar libros
+** DONE Buscar en todos los campos
+** DONE Buscar por título
+** DONE Buscar por autor
 * TODO Mejorar interfaz con JQuery y css
