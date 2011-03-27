@@ -8,24 +8,19 @@ class SearchEngine {
   }
 
   public function search($query, $search_type) {
-    $query = mysql_real_escape_string($query);
+    $query = mysql_real_escape_string($query);   
     if ($search_type == 'autor') {
-      $r = mysql_query("SELECT Libro.nombre, Autor.nombre FROM
-                        (Autor JOIN Libro_Autor on Autor.id = Libro_Autor.id_autor)
-                        JOIN Libro on Libro.id = Libro_Autor.id_libro WHERE
-                        Autor.nombre LIKE '%$query%'");
-
+      $where_clause = "Autor.nombre LIKE '%$query%'";
     } else if ($search_type == 'libro') {
-      $r = mysql_query("SELECT Libro.nombre, Autor.nombre FROM
-                        (Libro JOIN Libro_Autor on Libro.id = Libro_Autor.id_libro)
-                        JOIN Autor on Autor.id = Libro_Autor.id_autor WHERE
-                        Libro.nombre LIKE '%$query%'");      
+      $where_clause = "Libro.nombre LIKE '%$query%'";
     } else {
-      $r = mysql_query("SELECT Libro.nombre, Autor.nombre FROM
-                        (Libro JOIN Libro_Autor on Libro.id = Libro_Autor.id_libro)
-                        JOIN Autor on Autor.id = Libro_Autor.id_autor WHERE
-                        Libro.nombre LIKE '%$query%' OR Autor.nombre LIKE '%$query%'");
+      $where_clause = "Libro.nombre LIKE '%$query%' OR Autor.nombre LIKE '%$query%'";
     }
+
+    $r = mysql_query("SELECT Libro.nombre, Autor.nombre FROM
+                      (Libro JOIN Libro_Autor on Libro.id = Libro_Autor.id_libro)
+                      JOIN Autor on Autor.id = Libro_Autor.id_autor WHERE
+                      " . $where_clause);
 
     $libros = Array();
     while (($row = mysql_fetch_row($r)) !== FALSE) {
