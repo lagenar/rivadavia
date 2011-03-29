@@ -34,6 +34,7 @@ class SearchEngine {
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>Busqueda de libros</title>
   </head>
   <body>
@@ -46,17 +47,20 @@ class SearchEngine {
 	}
       } else {
     ?>
-    <form action="search.php">
-      <p>
-      <input type="text" name="query" />
-      <select name="search_type">
-	<option value="">Buscar en todos los campos</option>
-	<option value="libro">Buscar por titulo</option>
-	<option value="autor">Buscar por autor</option>
-      </select>
-      <input type="submit" value="Buscar" />
-      </p>
-    </form>
+    <div id="logo">
+      <img src="/logo.png" alt="Rivadavia"/>
+      <form action="search.php" style="position : relative; left : -15px;" id="searchform">
+	<p>
+	  <input type="text" size="40" name="query" /><br />
+	  <select name="search_type">
+	    <option value="">Buscar en todos los campos</option>
+	    <option value="libro">Buscar por titulo</option>
+	    <option value="autor">Buscar por autor</option>
+	  </select>
+	  <input type="submit" value="Buscar" />
+	</p>
+      </form>
+    </div>
     <?php
       }
     ?>

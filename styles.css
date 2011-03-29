@@ -1,0 +1,14 @@
+#logo
+{
+    position : absolute;
+    left : 50%;
+    top : 20%;
+    margin-left : -145px;
+}
+
+#searchform
+{
+    width : 100%;
+    display : block;
+    margin : 0 auto;
+}
